@@ -14,6 +14,48 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+
+
+
+Route::group(['namespace'=>'Api'],function () {
+
+
+
+    //routes Dashboard
+    Route::group(['namespace'=>'Admin','prefix'=>'dashboard'],function(){
+        // routes  auth
+        Route::post('login'     ,'AuthController@login');
+        Route::post('logout'    ,'AuthController@logout');
+
+        // routes profile
+
+        Route::get('profile','ProfileController@index');
+    });
+
+
+
+    //routes User
+    Route::group(['namespace'=>'User'],function(){
+
+        // routes  auth
+        Route::post('login'     ,'AuthController@login');
+        Route::post('register'  ,'AuthController@register');
+        Route::post('logout'    ,'AuthController@logout');
+
+
+        // routes profile
+        Route::get('profile','ProfileController@index');
+
+
+
+    });
 });
+
+
+
+
