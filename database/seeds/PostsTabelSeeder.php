@@ -14,7 +14,7 @@ class PostsTabelSeeder extends Seeder
     {
         $faker=Factory::create();
         for($i=0 ; $i<100 ; $i++){
-            $title=$faker->title;
+            $title= $title= $faker->words($nb = 3, $asText = true) ;
             Post::create([
                 'title'=>$title,
                 'slug'=>Str::slug($title),

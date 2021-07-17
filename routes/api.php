@@ -53,6 +53,20 @@ Route::group(['namespace'=>'Api'],function () {
 
 
 
+        // routes posts
+
+        Route::get('posts','PostControllrt@index');
+        Route::get('show-post/{id}','PostControllrt@show');
+        Route::post('create-post','PostControllrt@create');
+        Route::get('edit-post/{id}','PostControllrt@edit');
+        Route::post('update-post/{id}','PostControllrt@update');
+        Route::post('delete-post/{id}','PostControllrt@delete');
+
+
+
+
+
+
     });
 });
 

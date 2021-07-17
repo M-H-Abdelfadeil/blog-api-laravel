@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
-        'title', 'slug', 'content',
+        'title',  'content','user_id',
     ];
 
     /**
@@ -18,4 +18,13 @@ class Post extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+
+    // relations
+
+    public function user(){
+
+            return $this->belongsTo(User::class);
+    }
 }
