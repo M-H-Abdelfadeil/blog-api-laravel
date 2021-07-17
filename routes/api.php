@@ -44,23 +44,41 @@ Route::group(['namespace'=>'Api'],function () {
 
         // routes  auth
         Route::post('login'     ,'AuthController@login');
+
         Route::post('register'  ,'AuthController@register');
+
         Route::post('logout'    ,'AuthController@logout');
 
 
+
+
         // routes profile
-        Route::get('profile','ProfileController@index');
+        Route::get('profile'                     ,'ProfileController@index');
+
+        Route::get('edit-profile'                ,'ProfileController@edit');
+
+        Route::post('update-profile'             ,'ProfileController@update');
+
+        Route::post('update-password-profile'    ,'ProfileController@updatePassword');
+
+        Route::post('delete-profile'             ,'ProfileController@delete');
+
 
 
 
         // routes posts
 
-        Route::get('posts','PostControllrt@index');
-        Route::get('show-post/{id}','PostControllrt@show');
-        Route::post('create-post','PostControllrt@create');
-        Route::get('edit-post/{id}','PostControllrt@edit');
-        Route::post('update-post/{id}','PostControllrt@update');
-        Route::post('delete-post/{id}','PostControllrt@delete');
+        Route::get('posts'              ,'PostControllrt@index');
+
+        Route::get('show-post/{id}'     ,'PostControllrt@show');
+
+        Route::post('create-post'       ,'PostControllrt@create');
+
+        Route::get('edit-post/{id}'     ,'PostControllrt@edit');
+
+        Route::post('update-post/{id}'  ,'PostControllrt@update');
+
+        Route::post('delete-post/{id}'  ,'PostControllrt@delete');
 
 
 

@@ -16,7 +16,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('auth.api:user-api')->only('logout');
-        
+
     }
     public function login(Request $request){
         $validate= Validator::make($request->all(), $this->rulesLogin());
@@ -80,7 +80,7 @@ class AuthController extends Controller
         }catch(\Exception $e){
             return $this->resApi(false,$e->getMessage());
         }
-        
+
     }
 
 
@@ -94,8 +94,8 @@ class AuthController extends Controller
     private  function rulesRegister(){
 
         return [
-            'name'=>'required',
-            'email'=>'required|email',
+            'name'=>'required|string|max:100',
+            'email'=>'required|email|unique:users,email',
             'password'=>'required|string',
         ];
     }
