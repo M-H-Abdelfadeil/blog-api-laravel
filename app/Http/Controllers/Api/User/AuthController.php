@@ -50,11 +50,6 @@ class AuthController extends Controller
             return $this->resApi(false,'Error verifying data', $data);
         }
 
-        $findUser=User::whereEmail($request->email)->first();
-        if($findUser){
-
-            return $this->resApi(false,'The email already exists');
-        }
         User::create([
             'name'=>$request->name,
             'email'=>$request->email,
@@ -66,7 +61,7 @@ class AuthController extends Controller
         $token=auth('user-api')->attempt($credential);
         $data=auth('user-api')->user();
         $data->token=$token;
-        return $this->resApi(true,'You are logged in successfully',$data);
+        return $this->resApi(true,'You are register in successfully',$data);
     }
 
 
@@ -96,7 +91,7 @@ class AuthController extends Controller
         return [
             'name'=>'required|string|max:100',
             'email'=>'required|email|unique:users,email',
-            'password'=>'required|string',
+            'password'=>'required|string|confirmed',
         ];
     }
 }

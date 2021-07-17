@@ -29,12 +29,30 @@ Route::group(['namespace'=>'Api'],function () {
     //routes Dashboard
     Route::group(['namespace'=>'Admin','prefix'=>'dashboard'],function(){
         // routes  auth
-        Route::post('login'     ,'AuthController@login');
-        Route::post('logout'    ,'AuthController@logout');
+        Route::post('login'         ,'AuthController@login');
+        Route::post('logout'        ,'AuthController@logout');
 
         // routes profile
+         // routes profile
+         Route::get('profile'                     ,'ProfileController@index');
 
-        Route::get('profile','ProfileController@index');
+         Route::get('edit-profile'                ,'ProfileController@edit');
+
+         Route::post('update-profile'             ,'ProfileController@update');
+
+         Route::post('update-password-profile'    ,'ProfileController@updatePassword');
+
+         Route::post('delete-profile'             ,'ProfileController@delete');
+
+
+         
+
+        // routes main
+        Route::post('delete-user'   ,'MainController@deleteUser');
+        Route::post('delete-post'   ,'MainController@deletePost');
+
+        Route::get('admins'         ,'MainController@showAdmins');
+        Route::post('create-admin'      ,'MainController@createAdmin');
     });
 
 
